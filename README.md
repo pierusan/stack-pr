@@ -32,7 +32,7 @@ pipx install stack-pr
 Manually, you can clone the repository and run the following command:
 
 ```bash
-pipx install .
+pipx install . --force
 ```
 
 ## Workflow
@@ -108,7 +108,6 @@ trying to create a stack.
 
 > **Pro-tip**: a convenient way to see what commits will be considered by
 > default is the following command:
->
 
 ```bash
 alias githist='git log --abbrev-commit --oneline $(git merge-base origin/main HEAD)^..HEAD'
@@ -143,11 +142,11 @@ The command accepts a couple of options that might be useful, namely:
 - `--draft` - mark all created PRs as draft. This helps to avoid over-burdening
   CI.
 - `--draft-bitmask` - mark select PRs in a stack as draft using a bitmask where
-    `1` indicates draft, and `0` indicates non-draft.
-    For example `--draft-bitmask 0010` to make the third PR a draft in a stack
-    of four.
-    The length of the bitmask must match the number of stacked PRs.
-    Overridden by `--draft` when passed.
+  `1` indicates draft, and `0` indicates non-draft.
+  For example `--draft-bitmask 0010` to make the third PR a draft in a stack
+  of four.
+  The length of the bitmask must match the number of stacked PRs.
+  Overridden by `--draft` when passed.
 - `--reviewer="handle1,handle2"` - assign specified reviewers.
 
 If the command succeeded, we should see “SUCCESS!” in the end, and we can now
@@ -251,9 +250,9 @@ These arguments can be used with any subcommand:
 - `--hyperlinks/--no-hyperlinks`: Enable/disable hyperlink support (default: enabled)
 - `-V, --verbose`: Enable verbose output from Git subcommands (default: false)
 - `--branch-name-template`: Template for generated branch names (default: "$USERNAME/stack"). The following variables are supported:
-   - `$USERNAME`: The username of the current user
-   - `$BRANCH`: The current branch name
-   - `$ID`: The location for the ID of the branch. The ID is determined by the order of creation of the branches. If `$ID` is not found in the template, the template will be appended with `/$ID`.
+  - `$USERNAME`: The username of the current user
+  - `$BRANCH`: The current branch name
+  - `$ID`: The location for the ID of the branch. The ID is determined by the order of creation of the branches. If `$ID` is not found in the template, the template will be appended with `/$ID`.
 
 ### Subcommands
 
