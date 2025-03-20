@@ -1381,6 +1381,9 @@ def main():
         print(h(red("Invalid usage of the stack-pr command.")))
         parser.print_help()
         return
+    
+    # Give visibility that we're in my fork
+    log(h("Pierre's fork"), level=1)
 
     # Make sure "$ID" is present in the branch name template and append it if not
     args.branch_name_template = fix_branch_name_template(args.branch_name_template)
