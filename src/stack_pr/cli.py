@@ -1047,11 +1047,12 @@ def delete_remote_branches(
     run_shell_command(["git", "fetch", "--prune", remote], quiet=not verbose)
 
     branch_name_base = get_branch_name_base(branch_name_template)
+    git_command_branch_template = branch_name_base.replace(r"$ID", "*")
     refs = get_command_output(
         [
             "git",
             "for-each-ref",
-            f"refs/remotes/{remote}/{branch_name_base}",
+            f"refs/remotes/{remote}/{git_command_branch_template}",
             "--format=%(refname)",
         ]
     ).split()
